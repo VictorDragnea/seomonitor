@@ -11,6 +11,7 @@ export default {
     methods: {
         goToNextStep() {
             this.$router.push({ path: '/step5'});
+            console.log();
         }
     }
 }

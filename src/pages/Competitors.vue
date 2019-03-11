@@ -24,7 +24,7 @@
             <div class="col-sm-8 offset-sm-2">
                 <app-website-table :websitesList="websites"></app-website-table>
             </div>
-            <app-add-competitor></app-add-competitor>
+            <app-add-competitor @urlWasAdded="updateWebsites($event)"></app-add-competitor>
             <app-next></app-next>
         </div>  
     </div>
@@ -36,24 +36,29 @@ import AddCompetitor from '../components/AddCompetitor.vue';
 import WebsiteTable from '../components/WebsiteTable.vue';
 
 export default {
-      data: function() {
-    return {
-      websites: [
-        {"id": 272, "domain_name": "emag.ro"},
-        {"id": 7277, "domain_name": "altex.ro"},
-        {"id": 280, "domain_name": "cel.ro"},
-        {"id": 12095, "domain_name": "ideall.ro"},
-        {"id": 407, "domain_name": "compari.ro"},
-        {"id": 6452, "domain_name": "flanco.ro"},
-        {"id": 357, "domain_name": "olx.ro"},
-        {"id": 285, "domain_name": "ro.wikipedia.org"},
-        {"id": 28679, "domain_name": "retete.unica.ro"},
-        {"id": 56477, "domain_name": "badabum.ro"},
-        {"id": 25022, "domain_name": "foodstory.stirileprotv.ro"},
-        {"id": 12118, "domain_name": "domo.ro"},
-        {"id": 337, "domain_name": "antena3.ro"}
-      ]
-    }
+    data: function() {
+        return {
+            websites: [
+                {"id": 272, "domain_name": "emag.ro"},
+                {"id": 7277, "domain_name": "altex.ro"},
+                {"id": 280, "domain_name": "cel.ro"},
+                {"id": 12095, "domain_name": "ideall.ro"},
+                {"id": 407, "domain_name": "compari.ro"},
+                {"id": 6452, "domain_name": "flanco.ro"},
+                {"id": 357, "domain_name": "olx.ro"},
+                {"id": 285, "domain_name": "ro.wikipedia.org"},
+                {"id": 28679, "domain_name": "retete.unica.ro"},
+                {"id": 56477, "domain_name": "badabum.ro"},
+                {"id": 25022, "domain_name": "foodstory.stirileprotv.ro"},
+                {"id": 12118, "domain_name": "domo.ro"},
+                {"id": 337, "domain_name": "antena3.ro"}
+            ]
+        }
+  },
+  methods: {
+      updateWebsites(val) {
+          this.websites.push(val);
+      }
   },
     components: {
         appNext: NextButton,
