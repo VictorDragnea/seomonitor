@@ -13,8 +13,11 @@ const router = new VueRouter({
 
 })
 
+export const eventBus = new Vue();
+
 new Vue({
   el: '#app',
   router,
   render: h => h(App)
 })
+

@@ -6,7 +6,7 @@
                 type="checkbox" 
                 :id="website.id" 
                 :name="website.id"
-                v-on:click="addCheckedCount">
+                @change="addCheckedCount($event)">
             <img :src='"//www.google.com/s2/favicons?domain=" + website.domain_name' />
             <label class="form-check-label" :for="website.id">{{ website.domain_name = website.domain_name.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0] }}</label>
         </div>
@@ -14,18 +14,18 @@
 </template>
 
 <script>
+import { eventBus } from "../main";
+
 export default {
     props: {
-        website: Object
+        website: Object,
     },
     methods: {
         addCheckedCount($event) {
-            console.log(typeof $event.target.value);
-            if($event.target.value === 'on') {
-                this.$emit('wasChecked')
+            if($event.target.checked === true) {
+               eventBus.$emit('inputTrue') 
             } else {
-                $event.preventDefault;
-                $event.stopPropagation;
+                eventBus.$emit('inputFalse')
             }
         }
     }
